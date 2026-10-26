@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "No Autoplay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "YouTube plays only what you start: no channel trailers, no previews on hover, no next video on its own.",
+  "yab": { "site_actions": ["clicks"] },
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],

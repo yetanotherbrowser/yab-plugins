@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Player Defaults",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "YouTube keeps your speed and quality, opens videos in theater mode and answers \"Continue watching?\" for you.",
+  "yab": { "site_actions": ["clicks"] },
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],

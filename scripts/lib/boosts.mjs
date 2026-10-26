@@ -153,6 +153,7 @@ export function rightsOf(rung, sites, hosts = [], manifest = null, files = {}) {
     + (minutes ? ` Checks public data every ${minutes} minutes.` : '')
     + (commands ? ' Adds commands, quick actions or routines to Settings.' : '')
     + (ai ? ` Up to ${Number.isInteger(yab.daily_limit) ? yab.daily_limit : 20} AI calls a day.` : '')
+    + (yab.site_actions?.includes('clicks') ? ` Presses buttons on ${sites.map(displayHost).join(', ')}.` : '')
     + (hosts.length ? ` Talks to ${hosts.join(', ')}.` : '');
 }
 

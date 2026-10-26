@@ -26,7 +26,7 @@ const SCRIPT_KEYS = new Set(['matches', 'css', 'js', 'run_at', 'all_frames']);
 const LISTING_KEYS = new Set(['name', 'intent', 'host', 'by', 'picks', 'preview', 'added']);
 const REVIEW_KEYS = new Set(['by', 'date', 'commit']);
 // BoostPlugin.parse in Yab, plus hosts (docs/store.md, "Other hosts").
-const YAB_KEYS = new Set(['permissions', 'tools', 'app', 'service', 'every', 'daily_limit', 'hosts']);
+const YAB_KEYS = new Set(['permissions', 'tools', 'app', 'service', 'every', 'daily_limit', 'hosts', 'site_actions']);
 const PERMISSIONS = new Set(['yab:ask', 'yab:memory', 'yab:route', 'yab:notify', 'yab:summarize', 'yab:translate', 'yab:calendar', 'yab:rows', 'yab:live', 'yab:task']);
 const MAX_HOSTS = 4;
 // BoostPackage.read: code must be readable and load no code at run time.
@@ -191,6 +191,11 @@ function pluginMetadata(manifest, md, files, fail) {
   if (yab === undefined) return;
   if (!yab || typeof yab !== 'object' || Array.isArray(yab)) { fail('manifest "yab" must be an object'); return; }
   for (const key of Object.keys(yab)) if (!YAB_KEYS.has(key)) fail(`yab key "${key}" is not supported`);
+  if (yab.site_actions !== undefined) {
+    const actions = yab.site_actions;
+    if (!Array.isArray(actions) || actions.some(action => action !== 'clicks') || new Set(actions).size !== actions.length) fail('yab.site_actions supports clicks only, declared once');
+    if (!(manifest.content_scripts ?? []).some(script => script.js?.length)) fail('site actions need page scripts on exact named sites');
+  }
   if (yab.permissions !== undefined) {
     if (!Array.isArray(yab.permissions)) fail('yab.permissions must be an array');
     else for (const permission of yab.permissions) if (!PERMISSIONS.has(permission)) fail(`unknown Yab permission ${permission}`);
