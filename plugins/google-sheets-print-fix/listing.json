@@ -1,0 +1,9 @@
+{
+  "name": "Sheets Print Fix",
+  "intent": "When I press Cmd+P in Google Sheets, choose my formatting and press Next, print the formatted pages I chose, not a picture of what is on my screen.",
+  "host": "docs.google.com",
+  "by": "vandenng",
+  "picks": false,
+  "preview": "https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit",
+  "added": "2026-11-24"
+}
