@@ -1,0 +1,9 @@
+@media screen {
+  .printing-canvas-container {
+    position: fixed !important;
+    left: -20000px !important;
+    top: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Sheets Print Fix",
+  "version": "1.0.0",
+  "description": "Google Sheets' Print (Cmd+P, then Next) prints the formatted pages you chose instead of a picture of the screen.",
+  "content_scripts": [
+    {
+      "matches": ["https://docs.google.com/*"],
+      "css": ["page/style.css"],
+      "js": ["page/page.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
